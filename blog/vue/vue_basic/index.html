@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue小技巧 | 狼子笔记</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/wanglk/favicon.ico">
+    <link rel="manifest" href="/wanglk/manifest.json">
+    <meta name="description" content="王龙楷个人博客,王龙楷,狼子笔记,个人博客,前端笔记,面试技巧,Vue,javascript,DBCss,html5">
+    <meta name="keywords" content="王龙楷个人博客,王龙楷,狼子笔记,个人博客,前端笔记,前端,vue,博客,javascript,html,DBCss">
+    <link rel="preload" href="/wanglk/assets/css/0.styles.262b31d0.css" as="style"><link rel="preload" href="/wanglk/assets/js/app.e3be854c.js" as="script"><link rel="preload" href="/wanglk/assets/js/2.df3fb21f.js" as="script"><link rel="preload" href="/wanglk/assets/js/79.0c68d18f.js" as="script"><link rel="preload" href="/wanglk/assets/js/9.7cecbded.js" as="script"><link rel="prefetch" href="/wanglk/assets/js/10.079934ec.js"><link rel="prefetch" href="/wanglk/assets/js/11.612cee03.js"><link rel="prefetch" href="/wanglk/assets/js/12.ffb016d1.js"><link rel="prefetch" href="/wanglk/assets/js/13.0d15f5e6.js"><link rel="prefetch" href="/wanglk/assets/js/14.f222a67a.js"><link rel="prefetch" href="/wanglk/assets/js/15.d7a7cc4d.js"><link rel="prefetch" href="/wanglk/assets/js/16.79b01f8e.js"><link rel="prefetch" href="/wanglk/assets/js/17.2a41ddcc.js"><link rel="prefetch" href="/wanglk/assets/js/18.395a34e1.js"><link rel="prefetch" href="/wanglk/assets/js/19.6ce5ae4b.js"><link rel="prefetch" href="/wanglk/assets/js/20.762eb605.js"><link rel="prefetch" href="/wanglk/assets/js/21.fce8aea5.js"><link rel="prefetch" href="/wanglk/assets/js/22.24c06031.js"><link rel="prefetch" href="/wanglk/assets/js/23.6f80cba8.js"><link rel="prefetch" href="/wanglk/assets/js/24.ae3a433b.js"><link rel="prefetch" href="/wanglk/assets/js/25.3aa11e5c.js"><link rel="prefetch" href="/wanglk/assets/js/26.b70e0515.js"><link rel="prefetch" href="/wanglk/assets/js/27.24fd760b.js"><link rel="prefetch" href="/wanglk/assets/js/28.540dddf3.js"><link rel="prefetch" href="/wanglk/assets/js/29.0bb4f07f.js"><link rel="prefetch" href="/wanglk/assets/js/3.6e8a01cc.js"><link rel="prefetch" href="/wanglk/assets/js/30.d7b3f371.js"><link rel="prefetch" href="/wanglk/assets/js/31.bd5dd138.js"><link rel="prefetch" href="/wanglk/assets/js/32.87944081.js"><link rel="prefetch" href="/wanglk/assets/js/33.9ab1d745.js"><link rel="prefetch" href="/wanglk/assets/js/34.0d4c71d6.js"><link rel="prefetch" href="/wanglk/assets/js/35.87536488.js"><link rel="prefetch" href="/wanglk/assets/js/36.8d8dd354.js"><link rel="prefetch" href="/wanglk/assets/js/37.216a3def.js"><link rel="prefetch" href="/wanglk/assets/js/38.377554b2.js"><link rel="prefetch" href="/wanglk/assets/js/39.4fbcbef9.js"><link rel="prefetch" href="/wanglk/assets/js/4.0a97cf23.js"><link rel="prefetch" href="/wanglk/assets/js/40.f0170102.js"><link rel="prefetch" href="/wanglk/assets/js/41.412fbe90.js"><link rel="prefetch" href="/wanglk/assets/js/42.f75f49c7.js"><link rel="prefetch" href="/wanglk/assets/js/43.980caa8d.js"><link rel="prefetch" href="/wanglk/assets/js/44.94a98093.js"><link rel="prefetch" href="/wanglk/assets/js/45.41097247.js"><link rel="prefetch" href="/wanglk/assets/js/46.0951117e.js"><link rel="prefetch" href="/wanglk/assets/js/47.bdc51465.js"><link rel="prefetch" href="/wanglk/assets/js/48.7bf5fd63.js"><link rel="prefetch" href="/wanglk/assets/js/49.6eca350a.js"><link rel="prefetch" href="/wanglk/assets/js/5.8df1c9fd.js"><link rel="prefetch" href="/wanglk/assets/js/50.b7bebcfc.js"><link rel="prefetch" href="/wanglk/assets/js/51.7c77b9bd.js"><link rel="prefetch" href="/wanglk/assets/js/52.9f92807b.js"><link rel="prefetch" href="/wanglk/assets/js/53.e29d7943.js"><link rel="prefetch" href="/wanglk/assets/js/54.1e50a9ea.js"><link rel="prefetch" href="/wanglk/assets/js/55.e1eb19fe.js"><link rel="prefetch" href="/wanglk/assets/js/56.cc64078b.js"><link rel="prefetch" href="/wanglk/assets/js/57.635c8c22.js"><link rel="prefetch" href="/wanglk/assets/js/58.857c2d26.js"><link rel="prefetch" href="/wanglk/assets/js/59.f629d5c2.js"><link rel="prefetch" href="/wanglk/assets/js/6.6690d1de.js"><link rel="prefetch" href="/wanglk/assets/js/60.f7a2e593.js"><link rel="prefetch" href="/wanglk/assets/js/61.22283711.js"><link rel="prefetch" href="/wanglk/assets/js/62.7213ba01.js"><link rel="prefetch" href="/wanglk/assets/js/63.b6cbb480.js"><link rel="prefetch" href="/wanglk/assets/js/64.50f82491.js"><link rel="prefetch" href="/wanglk/assets/js/65.eb21374e.js"><link rel="prefetch" href="/wanglk/assets/js/66.8fd06fa0.js"><link rel="prefetch" href="/wanglk/assets/js/67.b12f6013.js"><link rel="prefetch" href="/wanglk/assets/js/68.613108d6.js"><link rel="prefetch" href="/wanglk/assets/js/69.292b9092.js"><link rel="prefetch" href="/wanglk/assets/js/7.3b6600bd.js"><link rel="prefetch" href="/wanglk/assets/js/70.3cad693f.js"><link rel="prefetch" href="/wanglk/assets/js/71.1a156e09.js"><link rel="prefetch" href="/wanglk/assets/js/72.6284d4f1.js"><link rel="prefetch" href="/wanglk/assets/js/73.c2d91c11.js"><link rel="prefetch" href="/wanglk/assets/js/74.35b93487.js"><link rel="prefetch" href="/wanglk/assets/js/75.72ea94ef.js"><link rel="prefetch" href="/wanglk/assets/js/76.595164b9.js"><link rel="prefetch" href="/wanglk/assets/js/77.8e81425b.js"><link rel="prefetch" href="/wanglk/assets/js/78.da590014.js"><link rel="prefetch" href="/wanglk/assets/js/8.e576c660.js"><link rel="prefetch" href="/wanglk/assets/js/80.bfbef6eb.js"><link rel="prefetch" href="/wanglk/assets/js/81.2297672f.js"><link rel="prefetch" href="/wanglk/assets/js/82.1e1b6a7f.js"><link rel="prefetch" href="/wanglk/assets/js/83.4a2a590f.js">
+    <link rel="stylesheet" href="/wanglk/assets/css/0.styles.262b31d0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/wanglk/" class="home-link router-link-active"><!----> <span class="site-name">狼子笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/wanglk/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_basic/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  vue核心库
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_mockjs.html" class="nav-link">
+  vue-mockjs
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/setState.html" class="nav-link">
+  this.setState
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Lazy&amp;Suspense.html" class="nav-link">
+  React.lazy&amp;React.Suspense
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Context.html" class="nav-link">
+  Context
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/redux_core.html" class="nav-link">
+  redux概念理解
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/react-redux.html" class="nav-link">
+  react-redux基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/mobx-basic.html" class="nav-link">
+  mobx基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/reactAnswer.html" class="nav-link">
+  react小知识点
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES3_5/" class="nav-link">
+  JS3_5
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES_Next/" class="nav-link">
+  ES_Next
+</a></li></ul></div></div><div class="nav-item"><a href="/wanglk/blog/DBCss/" class="nav-link">
+  DOM+CSS
+</a></div><div class="nav-item"><a href="/wanglk/blog/other/" class="nav-link">
+  Others
+</a></div><div class="nav-item"><a href="/wanglk/blog/daily/" class="nav-link">
+  随笔
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小作品" class="dropdown-title"><span class="title">小作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/xiaomi/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  模仿小米网首页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/graduation-design/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  我的组件库React
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/wechart/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  聊天室vue+socket.io
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/wanglk/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_basic/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  vue核心库
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_mockjs.html" class="nav-link">
+  vue-mockjs
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/setState.html" class="nav-link">
+  this.setState
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Lazy&amp;Suspense.html" class="nav-link">
+  React.lazy&amp;React.Suspense
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Context.html" class="nav-link">
+  Context
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/redux_core.html" class="nav-link">
+  redux概念理解
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/react-redux.html" class="nav-link">
+  react-redux基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/mobx-basic.html" class="nav-link">
+  mobx基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/reactAnswer.html" class="nav-link">
+  react小知识点
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES3_5/" class="nav-link">
+  JS3_5
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES_Next/" class="nav-link">
+  ES_Next
+</a></li></ul></div></div><div class="nav-item"><a href="/wanglk/blog/DBCss/" class="nav-link">
+  DOM+CSS
+</a></div><div class="nav-item"><a href="/wanglk/blog/other/" class="nav-link">
+  Others
+</a></div><div class="nav-item"><a href="/wanglk/blog/daily/" class="nav-link">
+  随笔
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小作品" class="dropdown-title"><span class="title">小作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/xiaomi/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  模仿小米网首页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/graduation-design/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  我的组件库React
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/wechart/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  聊天室vue+socket.io
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/wanglk/blog/vue/vue_basic/" aria-current="page" class="active sidebar-link">Vue小技巧</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#工程化" class="sidebar-link">工程化</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#组件化" class="sidebar-link">组件化</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#状态管理" class="sidebar-link">状态管理</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#click-native-stop" class="sidebar-link">@click.native.stop</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#sync修饰符使用" class="sidebar-link">sync修饰符使用</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#通过-listeners实现隔代组件通信" class="sidebar-link">通过$listeners实现隔代组件通信</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#隔代组件通信方法汇总" class="sidebar-link">隔代组件通信方法汇总</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#离线安装npm包" class="sidebar-link">离线安装npm包</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#vue深度作用域样式" class="sidebar-link">vue深度作用域样式</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#监听组件的生命周期" class="sidebar-link">监听组件的生命周期</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#路由参数解耦" class="sidebar-link">路由参数解耦</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/vue/vue_basic/#函数式组件" class="sidebar-link">函数式组件</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue小技巧"><a href="#vue小技巧" class="header-anchor">#</a> Vue小技巧</h1> <h2 id="工程化"><a href="#工程化" class="header-anchor">#</a> 工程化</h2> <ol><li>全局安装vue-cli:<code>npm install -g @vue-cli</code></li> <li>初始化一个vue-cli工程：<code>vue create vueProjectNmae</code></li> <li>开始工程
+<br></li></ol> <h2 id="组件化"><a href="#组件化" class="header-anchor">#</a> 组件化</h2> <ol><li>定义组件</li> <li>导入组件</li> <li>注册组件</li> <li>使用组件
+template中只能有一个根组件。一般如下：</li></ol> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>	
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><br> <h2 id="状态管理"><a href="#状态管理" class="header-anchor">#</a> 状态管理</h2> <p>只能用mutations改变状态<br>
+事件提交mutations，mutations改变state，state驱动视图变化。<br>
+Vue.component(&quot;name&quot;,{})形式注册全局组件时，必须在Vue实例化之前执行。
+<br></p> <h2 id="click-native-stop"><a href="#click-native-stop" class="header-anchor">#</a> @click.native.stop</h2> <p><strong>Vue</strong>,组件上绑定事件需要加<code>.native</code>事件修饰符，可以用<code>@click.stop</code>阻止没有事件处理函数的事件冒泡。
+<br></p> <h2 id="sync修饰符使用"><a href="#sync修饰符使用" class="header-anchor">#</a> <code>sync</code>修饰符使用</h2> <p>对一个 prop 进行“双向绑定”。<a href="https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6" target="_blank" rel="noopener noreferrer">官方文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <br></p> <h2 id="通过-listeners实现隔代组件通信"><a href="#通过-listeners实现隔代组件通信" class="header-anchor">#</a> 通过$listeners实现隔代组件通信</h2> <p>子组件中的<code>$listeners</code>属性包含了父组件传入子组件的<strong>事件监听</strong>(不包含.native修饰的)，子组件可通过<code>v-on=&quot;$listeners&quot;</code>传入孙子组件，孙子组件通过<code>this.$emit(事件名，参数)</code>触发父组件或爷爷组件中的事件。
+<br></p> <h2 id="隔代组件通信方法汇总"><a href="#隔代组件通信方法汇总" class="header-anchor">#</a> 隔代组件通信方法汇总</h2> <ol><li>vuex-状态管理</li> <li>props-代代传</li> <li>provide/inject-依赖注入</li> <li>bus-中央事件总线
+<br></li></ol> <h2 id="离线安装npm包"><a href="#离线安装npm包" class="header-anchor">#</a> 离线安装npm包</h2> <ol><li><p>在有线环境下下载npm包:</p> <blockquote><p>npm install vue-scroller --global-style</p> <p>会把vue-scroller和它依赖的到打包到vue-scroller一个包中。</p></blockquote></li> <li><p>离线环境下导入npm包：</p> <blockquote><p>拷贝第一步打包好的npm包</p> <p>放入需要包项目的node-modules文件夹即可。</p> <p>不用修改package.json文件</p></blockquote></li></ol> <br> <h2 id="vue深度作用域样式"><a href="#vue深度作用域样式" class="header-anchor">#</a> vue深度作用域样式</h2> <p>在当前组件中<span style="color:red;">强制</span>修改子组件样式</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code># css中使用<span class="token operator">&gt;&gt;&gt;</span>
+<span class="token punctuation">.</span>box <span class="token operator">&gt;&gt;&gt;</span> <span class="token punctuation">.</span>title<span class="token punctuation">{</span>
+    color<span class="token operator">:</span>red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+# less<span class="token operator">/</span>scss中使用 <span class="token operator">/</span>deep<span class="token operator">/</span>
+<span class="token punctuation">.</span>box<span class="token punctuation">{</span>
+    <span class="token regex">/deep/</span> <span class="token punctuation">.</span>title<span class="token punctuation">{</span>
+        color<span class="token operator">:</span>red<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><br> <h2 id="监听组件的生命周期"><a href="#监听组件的生命周期" class="header-anchor">#</a> 监听组件的生命周期</h2> <p><strong>普通做法：</strong></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">//Parent.vue</span>
+<span class="token operator">&lt;</span>Child @mounted<span class="token operator">=</span><span class="token string">'dosomething'</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token comment">//Child.vue</span>
+<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;mounted&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>简单做法：</strong></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">//Parent.vue</span>
+<span class="token operator">&lt;</span>Child @hook<span class="token operator">:</span>mounted<span class="token operator">=</span><span class="token string">'doSomething'</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><br> <h2 id="路由参数解耦"><a href="#路由参数解耦" class="header-anchor">#</a> 路由参数解耦</h2> <p>一般在组件内使用路由参数，大多数人会这么做：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span><span class="token punctuation">{</span>
+    methods<span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">getParamsId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样做的缺点：高度耦合，使得该组件只能在某些特定的url上使用。</p> <p><strong>推荐的做法：</strong></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    routes<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>
+        path<span class="token operator">:</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span>
+        component<span class="token operator">:</span>User<span class="token punctuation">,</span>
+        props<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//核心</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>将路由的props属性设置为true后，组件内可通过props接收params参数</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span><span class="token punctuation">{</span>
+    props<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    methods<span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">getParamsId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><br> <h2 id="函数式组件"><a href="#函数式组件" class="header-anchor">#</a> 函数式组件</h2> <p>函数式组件是无状态，无任何生命周期和方法的组件，无法实例化。创建函数式组件很简单，只需在<code>template</code>上添加<code>functional</code>声明即可。渲染性能更高。</p> <p>函数式组件需要的一些都通过context参数传递。 具体参阅 <a href="/wanglk/blog/vue/vue_basic/[https:/cn.vuejs.org/v2/guide/render-function.html#函数式组件](https:/cn.vuejs.org/v2/guide/render-function.html#函数式组件)">Vue函数式组件</a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">作者：王龙楷； 标签：原创； 提交时间:</span> <span class="time">5/15/2020, 10:43:22 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/wanglk/assets/js/app.e3be854c.js" defer></script><script src="/wanglk/assets/js/2.df3fb21f.js" defer></script><script src="/wanglk/assets/js/79.0c68d18f.js" defer></script><script src="/wanglk/assets/js/9.7cecbded.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redux核心点理解 | 狼子笔记</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/wanglk/favicon.ico">
+    <link rel="manifest" href="/wanglk/manifest.json">
+    <meta name="description" content="王龙楷个人博客,王龙楷,狼子笔记,个人博客,前端笔记,面试技巧,Vue,javascript,DBCss,html5">
+    <meta name="keywords" content="王龙楷个人博客,王龙楷,狼子笔记,个人博客,前端笔记,前端,vue,博客,javascript,html,DBCss">
+    <link rel="preload" href="/wanglk/assets/css/0.styles.262b31d0.css" as="style"><link rel="preload" href="/wanglk/assets/js/app.e3be854c.js" as="script"><link rel="preload" href="/wanglk/assets/js/2.df3fb21f.js" as="script"><link rel="preload" href="/wanglk/assets/js/77.8e81425b.js" as="script"><link rel="preload" href="/wanglk/assets/js/9.7cecbded.js" as="script"><link rel="prefetch" href="/wanglk/assets/js/10.079934ec.js"><link rel="prefetch" href="/wanglk/assets/js/11.612cee03.js"><link rel="prefetch" href="/wanglk/assets/js/12.ffb016d1.js"><link rel="prefetch" href="/wanglk/assets/js/13.0d15f5e6.js"><link rel="prefetch" href="/wanglk/assets/js/14.f222a67a.js"><link rel="prefetch" href="/wanglk/assets/js/15.d7a7cc4d.js"><link rel="prefetch" href="/wanglk/assets/js/16.79b01f8e.js"><link rel="prefetch" href="/wanglk/assets/js/17.2a41ddcc.js"><link rel="prefetch" href="/wanglk/assets/js/18.395a34e1.js"><link rel="prefetch" href="/wanglk/assets/js/19.6ce5ae4b.js"><link rel="prefetch" href="/wanglk/assets/js/20.762eb605.js"><link rel="prefetch" href="/wanglk/assets/js/21.fce8aea5.js"><link rel="prefetch" href="/wanglk/assets/js/22.24c06031.js"><link rel="prefetch" href="/wanglk/assets/js/23.6f80cba8.js"><link rel="prefetch" href="/wanglk/assets/js/24.ae3a433b.js"><link rel="prefetch" href="/wanglk/assets/js/25.3aa11e5c.js"><link rel="prefetch" href="/wanglk/assets/js/26.b70e0515.js"><link rel="prefetch" href="/wanglk/assets/js/27.24fd760b.js"><link rel="prefetch" href="/wanglk/assets/js/28.540dddf3.js"><link rel="prefetch" href="/wanglk/assets/js/29.0bb4f07f.js"><link rel="prefetch" href="/wanglk/assets/js/3.6e8a01cc.js"><link rel="prefetch" href="/wanglk/assets/js/30.d7b3f371.js"><link rel="prefetch" href="/wanglk/assets/js/31.bd5dd138.js"><link rel="prefetch" href="/wanglk/assets/js/32.87944081.js"><link rel="prefetch" href="/wanglk/assets/js/33.9ab1d745.js"><link rel="prefetch" href="/wanglk/assets/js/34.0d4c71d6.js"><link rel="prefetch" href="/wanglk/assets/js/35.87536488.js"><link rel="prefetch" href="/wanglk/assets/js/36.8d8dd354.js"><link rel="prefetch" href="/wanglk/assets/js/37.216a3def.js"><link rel="prefetch" href="/wanglk/assets/js/38.377554b2.js"><link rel="prefetch" href="/wanglk/assets/js/39.4fbcbef9.js"><link rel="prefetch" href="/wanglk/assets/js/4.0a97cf23.js"><link rel="prefetch" href="/wanglk/assets/js/40.f0170102.js"><link rel="prefetch" href="/wanglk/assets/js/41.412fbe90.js"><link rel="prefetch" href="/wanglk/assets/js/42.f75f49c7.js"><link rel="prefetch" href="/wanglk/assets/js/43.980caa8d.js"><link rel="prefetch" href="/wanglk/assets/js/44.94a98093.js"><link rel="prefetch" href="/wanglk/assets/js/45.41097247.js"><link rel="prefetch" href="/wanglk/assets/js/46.0951117e.js"><link rel="prefetch" href="/wanglk/assets/js/47.bdc51465.js"><link rel="prefetch" href="/wanglk/assets/js/48.7bf5fd63.js"><link rel="prefetch" href="/wanglk/assets/js/49.6eca350a.js"><link rel="prefetch" href="/wanglk/assets/js/5.8df1c9fd.js"><link rel="prefetch" href="/wanglk/assets/js/50.b7bebcfc.js"><link rel="prefetch" href="/wanglk/assets/js/51.7c77b9bd.js"><link rel="prefetch" href="/wanglk/assets/js/52.9f92807b.js"><link rel="prefetch" href="/wanglk/assets/js/53.e29d7943.js"><link rel="prefetch" href="/wanglk/assets/js/54.1e50a9ea.js"><link rel="prefetch" href="/wanglk/assets/js/55.e1eb19fe.js"><link rel="prefetch" href="/wanglk/assets/js/56.cc64078b.js"><link rel="prefetch" href="/wanglk/assets/js/57.635c8c22.js"><link rel="prefetch" href="/wanglk/assets/js/58.857c2d26.js"><link rel="prefetch" href="/wanglk/assets/js/59.f629d5c2.js"><link rel="prefetch" href="/wanglk/assets/js/6.6690d1de.js"><link rel="prefetch" href="/wanglk/assets/js/60.f7a2e593.js"><link rel="prefetch" href="/wanglk/assets/js/61.22283711.js"><link rel="prefetch" href="/wanglk/assets/js/62.7213ba01.js"><link rel="prefetch" href="/wanglk/assets/js/63.b6cbb480.js"><link rel="prefetch" href="/wanglk/assets/js/64.50f82491.js"><link rel="prefetch" href="/wanglk/assets/js/65.eb21374e.js"><link rel="prefetch" href="/wanglk/assets/js/66.8fd06fa0.js"><link rel="prefetch" href="/wanglk/assets/js/67.b12f6013.js"><link rel="prefetch" href="/wanglk/assets/js/68.613108d6.js"><link rel="prefetch" href="/wanglk/assets/js/69.292b9092.js"><link rel="prefetch" href="/wanglk/assets/js/7.3b6600bd.js"><link rel="prefetch" href="/wanglk/assets/js/70.3cad693f.js"><link rel="prefetch" href="/wanglk/assets/js/71.1a156e09.js"><link rel="prefetch" href="/wanglk/assets/js/72.6284d4f1.js"><link rel="prefetch" href="/wanglk/assets/js/73.c2d91c11.js"><link rel="prefetch" href="/wanglk/assets/js/74.35b93487.js"><link rel="prefetch" href="/wanglk/assets/js/75.72ea94ef.js"><link rel="prefetch" href="/wanglk/assets/js/76.595164b9.js"><link rel="prefetch" href="/wanglk/assets/js/78.da590014.js"><link rel="prefetch" href="/wanglk/assets/js/79.0c68d18f.js"><link rel="prefetch" href="/wanglk/assets/js/8.e576c660.js"><link rel="prefetch" href="/wanglk/assets/js/80.bfbef6eb.js"><link rel="prefetch" href="/wanglk/assets/js/81.2297672f.js"><link rel="prefetch" href="/wanglk/assets/js/82.1e1b6a7f.js"><link rel="prefetch" href="/wanglk/assets/js/83.4a2a590f.js">
+    <link rel="stylesheet" href="/wanglk/assets/css/0.styles.262b31d0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/wanglk/" class="home-link router-link-active"><!----> <span class="site-name">狼子笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/wanglk/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_basic/" class="nav-link">
+  vue核心库
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_mockjs.html" class="nav-link">
+  vue-mockjs
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/setState.html" class="nav-link">
+  this.setState
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Lazy&amp;Suspense.html" class="nav-link">
+  React.lazy&amp;React.Suspense
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Context.html" class="nav-link">
+  Context
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/redux_core.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  redux概念理解
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/react-redux.html" class="nav-link">
+  react-redux基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/mobx-basic.html" class="nav-link">
+  mobx基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/reactAnswer.html" class="nav-link">
+  react小知识点
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES3_5/" class="nav-link">
+  JS3_5
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES_Next/" class="nav-link">
+  ES_Next
+</a></li></ul></div></div><div class="nav-item"><a href="/wanglk/blog/DBCss/" class="nav-link">
+  DOM+CSS
+</a></div><div class="nav-item"><a href="/wanglk/blog/other/" class="nav-link">
+  Others
+</a></div><div class="nav-item"><a href="/wanglk/blog/daily/" class="nav-link">
+  随笔
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小作品" class="dropdown-title"><span class="title">小作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/xiaomi/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  模仿小米网首页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/graduation-design/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  我的组件库React
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/wechart/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  聊天室vue+socket.io
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/wanglk/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_basic/" class="nav-link">
+  vue核心库
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/vue/vue_mockjs.html" class="nav-link">
+  vue-mockjs
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/setState.html" class="nav-link">
+  this.setState
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Lazy&amp;Suspense.html" class="nav-link">
+  React.lazy&amp;React.Suspense
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/Context.html" class="nav-link">
+  Context
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/redux_core.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  redux概念理解
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/react-redux.html" class="nav-link">
+  react-redux基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/mobx-basic.html" class="nav-link">
+  mobx基本使用
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/react/reactAnswer.html" class="nav-link">
+  react小知识点
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES3_5/" class="nav-link">
+  JS3_5
+</a></li><li class="dropdown-item"><!----> <a href="/wanglk/blog/ECMAScript/ES_Next/" class="nav-link">
+  ES_Next
+</a></li></ul></div></div><div class="nav-item"><a href="/wanglk/blog/DBCss/" class="nav-link">
+  DOM+CSS
+</a></div><div class="nav-item"><a href="/wanglk/blog/other/" class="nav-link">
+  Others
+</a></div><div class="nav-item"><a href="/wanglk/blog/daily/" class="nav-link">
+  随笔
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小作品" class="dropdown-title"><span class="title">小作品</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/xiaomi/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  模仿小米网首页
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/graduation-design/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  我的组件库React
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://119.45.114.204:8080/wechart/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  聊天室vue+socket.io
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Redux核心点理解</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/wanglk/blog/react/redux_core.html#概念理解" class="sidebar-link">概念理解</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/wanglk/blog/react/redux_core.html#state" class="sidebar-link">state</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/react/redux_core.html#action" class="sidebar-link">action</a></li><li class="sidebar-sub-header"><a href="/wanglk/blog/react/redux_core.html#reducer" class="sidebar-link">reducer</a></li></ul></li><li><a href="/wanglk/blog/react/redux_core.html#react中简单使用" class="sidebar-link">React中简单使用</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="redux核心点理解"><a href="#redux核心点理解" class="header-anchor">#</a> Redux核心点理解</h1> <p>其实Redux本身并不复杂。我们只要理解了<code>state</code>、<code>action</code>、<code>reducer</code>这几个核心概念，就可以学会Redux。</p> <p>不要把觉得Redux有什么特别的魔法，其实也就是一些对象和函数而已。</p> <h2 id="概念理解"><a href="#概念理解" class="header-anchor">#</a> 概念理解</h2> <h3 id="state"><a href="#state" class="header-anchor">#</a> state</h3> <p><code>state</code>，就是React等界面库托付给Redux管理的数据，和React本身的state是一样一样的。比如：</p> <h3 id="action"><a href="#action" class="header-anchor">#</a> action</h3> <p><code>action</code>，一个普通的JavaScript对象(真的就是一个普通的JavaScript对象，没有什么了不起的技术)或者是返回对象的函数。它的主要作用就是描述我们要做什么而已。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>type<span class="token operator">:</span><span class="token string">&quot;count_ADD&quot;</span><span class="token punctuation">,</span>num<span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">}</span>
+<span class="token comment">// type 是action必需的一个字段，描述这个action是干嘛的，其他的是一些参数而已。</span>
+<span class="token comment">// action对象会被传递给reducer。</span>
+</code></pre></div><h3 id="reducer"><a href="#reducer" class="header-anchor">#</a> reducer</h3> <p>action描述了我们要做什么，那reducer就是我们到底怎么做。</p> <p>注意了，这个没什么了不起的地方，reducer就是一些函数，只是这些函数接受<code>state</code>和<code>action</code>作为参数,并返回<span style="color:red;"><strong>新</strong></span>的<code>state</code>。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token operator">=</span>defaultState<span class="token punctuation">,</span>action<span class="token operator">=</span><span class="token punctuation">{</span>num<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'INCREMENT'</span><span class="token operator">:</span>
+            <span class="token keyword">let</span> addState <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            addState<span class="token punctuation">.</span>resultNum <span class="token operator">+=</span> action<span class="token punctuation">.</span>num<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> addState<span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'DECREMENT'</span><span class="token operator">:</span>
+            <span class="token keyword">let</span> subState <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            subState<span class="token punctuation">.</span>resultNum <span class="token operator">-=</span> action<span class="token punctuation">.</span>num<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> subState<span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 以上就是一个reducer啦。</span>
+<span class="token comment">// 接受state和action作为参数，返回新的state。 </span>
+<span class="token comment">// JSON.parse(JSON.stringify(state)),深拷贝state，用于返回新的state。</span>
+</code></pre></div><p>理解了这三个核心概念，我们就可以在React中用一用它了。当然，这会稍微有些繁杂，但是也不难啦。别担心，在学习了React-Redux之后，就会简化很多的。</p> <h2 id="react中简单使用"><a href="#react中简单使用" class="header-anchor">#</a> React中简单使用</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code>npm install <span class="token operator">--</span>save redux
+</code></pre></div><p>React项目src目录下新建<code>store</code>目录：</p> <p><code>+ index.js</code>:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>createStore<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+* 第一步：redux管理的状态
+* */</span>
+<span class="token keyword">let</span> defaultState <span class="token operator">=</span> <span class="token punctuation">{</span>
+    resultNum<span class="token operator">:</span><span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+* 第二步： action:
+*   视图层派发action，action执行指定的reducer去修改state
+* */</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> <span class="token function-variable function">countADD</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    type<span class="token operator">:</span><span class="token string">'INCREMENT'</span><span class="token punctuation">,</span>
+    num
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> <span class="token function-variable function">countSUB</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+   type<span class="token operator">:</span><span class="token string">'DECREMENT'</span><span class="token punctuation">,</span>
+   num
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+* 第三步： reducer：
+*   实际修改state的纯函数
+*   形式：
+*       (state,action)=&gt;newState
+*   	需要返回全新的state，而不是修改参入的参数。
+* */</span>
+<span class="token keyword">function</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token operator">=</span>defaultState<span class="token punctuation">,</span>action<span class="token operator">=</span><span class="token punctuation">{</span>num<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'INCREMENT'</span><span class="token operator">:</span>
+            <span class="token keyword">let</span> addState <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            addState<span class="token punctuation">.</span>resultNum <span class="token operator">+=</span> action<span class="token punctuation">.</span>num<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> addState<span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'DECREMENT'</span><span class="token operator">:</span>
+            <span class="token keyword">let</span> subState <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            subState<span class="token punctuation">.</span>resultNum <span class="token operator">-=</span> action<span class="token punctuation">.</span>num<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> subState<span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment">/*
+* 第四步： 根据 reduers 创建 store ,管理 state
+* */</span>
+
+<span class="token keyword">let</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> store<span class="token punctuation">;</span>
+</code></pre></div><p>React项目src目录下新建<code>components</code>目录:</p> <p><code>+ reduxTest.js</code>:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> store<span class="token punctuation">,</span><span class="token punctuation">{</span>countADD<span class="token punctuation">,</span>countSUB<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../store&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ReduxTest</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//第五步： 从store中获取state 结果等价于this.state = {resultNum:0}</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 第六步：订阅store,当store中state更新时，更新界面</span>
+        store<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>resetState<span class="token punctuation">)</span>
+        <span class="token comment">/* 
+        	store.subscribe()接受一个函数，用于监听store中state的变化。
+        	一旦state变化，就会执行监听函数，更新本组件的state。
+        */</span>
+    <span class="token punctuation">}</span>
+    <span class="token function-variable function">resetState</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token comment">// 更新state，更新界面</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span>store<span class="token punctuation">.</span>getState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span>resultNum<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>textAlign<span class="token operator">:</span><span class="token string">&quot;center&quot;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span>resultNum<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>addNum<span class="token punctuation">}</span><span class="token operator">&gt;</span>添加<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>subNum<span class="token punctuation">}</span><span class="token operator">&gt;</span>减少<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function-variable function">addNum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token comment">// 第七步： 视图派发action</span>
+        store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">countADD</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function-variable function">subNum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token comment">// 视图层派发action</span>
+        store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">countSUB</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> ReduxTest<span class="token punctuation">;</span>
+</code></pre></div><p>使用ReduxTest组件，我们便用redux完成了简单的状态管理。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">作者：王龙楷； 标签：原创； 提交时间:</span> <span class="time">6/2/2020, 2:56:34 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/wanglk/assets/js/app.e3be854c.js" defer></script><script src="/wanglk/assets/js/2.df3fb21f.js" defer></script><script src="/wanglk/assets/js/77.8e81425b.js" defer></script><script src="/wanglk/assets/js/9.7cecbded.js" defer></script>
+  </body>
+</html>
